@@ -1,0 +1,34 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "dependsOn": [
+                "make build dir",
+                "compile"
+            ],
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "make build dir",
+            "type": "shell",
+            "command": "if [ ! -d \"./build\" ]; then mkdir build; fi"
+        },
+        {
+            "label": "compile",
+            "type": "shell",
+            "command": "gfortran",
+            "args": [
+                    "-Wall",
+                    "-o",
+                    "./build/hello",
+                    "helloVSCode.f95",
+                    "getName.f95"  
+            ]
+        }
+    ]
+}
